@@ -1,3 +1,5 @@
+package model
+
 data class Producto(
     var nombre: String,
     var descripcion: String,
