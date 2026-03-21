@@ -1,3 +1,6 @@
+package service
+import model.Producto
+
 class Inventario {
 
     private val listaProductos = mutableListOf<Producto>()
