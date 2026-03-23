@@ -1,3 +1,7 @@
+package service
+
+import model.Producto
+
 class Inventario {
 
     private val listaProductos = mutableListOf<Producto>()
@@ -21,7 +25,7 @@ class Inventario {
 
         listaProductos.add(nuevoProducto)
 
-        println("Producto agregado correctamente.\n")
+        println("model.Producto agregado correctamente.\n")
     }
 
     // Mostrar productos
@@ -32,14 +36,13 @@ class Inventario {
             return
         }
 
-        println("Lista de productos:")
+        println("=============== PRODUCTOS ===============")
 
         listaProductos.forEachIndexed { index, producto ->
-
-            println("ID: $index")
-            producto.mostrarProducto()
-
+            println("ID: $index | ${producto.nombre} | Precio: $${producto.precio} | Stock: ${producto.cantidad}")
         }
+
+        println("=========================================\n")
     }
 
     // Editar producto
@@ -51,7 +54,7 @@ class Inventario {
         val id = readLine()?.toIntOrNull()
 
         if (id == null || id !in listaProductos.indices) {
-            println("Producto no encontrado.\n")
+            println("model.Producto no encontrado.\n")
             return
         }
 
@@ -69,7 +72,7 @@ class Inventario {
         println("Nueva cantidad:")
         producto.cantidad = readLine()?.toIntOrNull() ?: producto.cantidad
 
-        println("Producto actualizado correctamente.\n")
+        println("model.Producto actualizado correctamente.\n")
     }
 
     // Eliminar producto
@@ -81,12 +84,12 @@ class Inventario {
         val id = readLine()?.toIntOrNull()
 
         if (id == null || id !in listaProductos.indices) {
-            println("Producto no encontrado.\n")
+            println("model.Producto no encontrado.\n")
             return
         }
 
         listaProductos.removeAt(id)
 
-        println("Producto eliminado correctamente.\n")
+        println("model.Producto eliminado correctamente.\n")
     }
 }
