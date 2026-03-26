@@ -92,4 +92,26 @@ class Inventario {
 
         println("model.Producto eliminado correctamente.\n")
     }
+
+    fun obtenerProductoPorId(id: Int): Producto? {
+        if (id !in listaProductos.indices) {
+            return null
+        }
+        return listaProductos[id]
+    }
+
+    fun agregarProductoDirecto(producto: Producto) {
+        listaProductos.add(producto)
+    }
+
+    fun reducirStock(nombre: String, cantidad: Int) {
+
+        val producto = listaProductos.find {
+            it.nombre.equals(nombre, ignoreCase = true)
+        }
+
+        if (producto != null) {
+            producto.cantidad -= cantidad
+        }
+    }
 }

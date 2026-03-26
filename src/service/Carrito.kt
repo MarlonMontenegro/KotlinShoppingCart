@@ -54,4 +54,12 @@ class Carrito {
     fun calcularTotal(): Double {
         return carrito.sumOf { it.precio * it.cantidad }
     }
+
+    fun obtenerProductos(): List<Producto> {
+        return carrito.toList()
+    }
+
+    fun vaciarCarrito() {
+        carrito.clear()
+    }
 }

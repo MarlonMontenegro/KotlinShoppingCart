@@ -1,9 +1,8 @@
-import model.Cliente
-import model.Producto
-import service.EmailService
-import service.FacturaService
-import util.PdfGenerator
-
+import ui.ConsoleUI
 fun main() {
+
+    val sistemaDeCarrito = ConsoleUI()
+
+    sistemaDeCarrito.iniciar()
 
 }
