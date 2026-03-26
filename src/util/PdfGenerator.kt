@@ -6,6 +6,7 @@ import com.lowagie.text.pdf.PdfWriter
 import model.Factura
 import java.io.File
 import java.io.FileOutputStream
+import java.time.format.DateTimeFormatter
 
 class PdfGenerator {
 
@@ -13,7 +14,10 @@ class PdfGenerator {
         val carpeta = File("facturas")
         if (!carpeta.exists()) carpeta.mkdirs()
 
-        val ruta = "facturas/factura_${factura.numeroFactura}.pdf"
+        val formato = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm")
+        val fechaFormateada = factura.fecha.format(formato)
+
+        val ruta = "facturas/factura_${factura.numeroFactura}_$fechaFormateada.pdf"
 
         val document = Document()
         PdfWriter.getInstance(document, FileOutputStream(ruta))

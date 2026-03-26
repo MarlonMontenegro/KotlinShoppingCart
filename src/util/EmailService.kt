@@ -12,6 +12,8 @@ import jakarta.mail.internet.MimeMultipart
 import model.Factura
 import java.io.File
 import java.util.Properties
+import java.time.format.DateTimeFormatter
+
 
 class EmailService(
     private val smtpHost: String  = "sandbox.smtp.mailtrap.io",
@@ -75,12 +77,11 @@ class EmailService(
     }
 
     fun enviarFacturaPorCorreo(factura: Factura) {
-        val rutaPdf = "facturas/factura_${factura.numeroFactura}.pdf"
-        val archivoPdf = File(rutaPdf)
+        val formato = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm")
+        val fechaFormateada = factura.fecha.format(formato)
 
-        println("Buscando PDF en: ${archivoPdf.absolutePath}")
-        println("¿Existe el PDF? ${archivoPdf.exists()}")
-        println("Tamaño PDF: ${if (archivoPdf.exists()) archivoPdf.length() else 0}")
+        val rutaPdf = "facturas/factura_${factura.numeroFactura}_$fechaFormateada.pdf"
+        val archivoPdf = File(rutaPdf)
 
         if (!archivoPdf.exists()) {
             throw IllegalArgumentException("No se encontró el PDF: $rutaPdf")
