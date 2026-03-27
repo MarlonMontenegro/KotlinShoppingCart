@@ -16,7 +16,7 @@ class DataSeeder {
         )
 
         inventario.agregarProductoDirecto(
-            Producto("Teclado", "Teclado mecánico", 60.0, 30)
+            Producto("Teclado", "Teclado mecánico", 20.0, 30)
         )
 
         inventario.agregarProductoDirecto(
